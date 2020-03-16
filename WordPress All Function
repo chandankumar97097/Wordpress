@@ -1,0 +1,738 @@
+//Chandan
+1. Memory size Increase with config.php
+{define( 'WP_MEMORY_LIMIT', '256M' );}
+2. Increase Uploading File Siz with php.ini go to file-> wp-admin-> Create New File-> php.ini-> and Past This Code->
+upload_max_filesize = 1000M
+post_max_size = 2000M
+memory_limit = 3000M
+file_uploads = On
+max_execution_time = 180
+3. Hide Admin-Bar with functions.php->
+add_filter('show_admin_bar', '__return_false');
+4. Multisite-> config.php-> {define('WP_ALLOW_MULTISITE', true);}
+5. Title Tag->Functions.php-> {add_theme_support( 'title-tag' );}
+6. Post_thumbnail->Functions.php-> {add_theme_support( 'post-thumbnails' );}
+7. Functions.php-> {
+// This theme uses wp_nav_menu() in two locations.
+	register_nav_menus( array(
+		'top'    => __( 'Top Menu', 'twentyseventeen' ),
+		'social' => __( 'Social Links Menu', 'twentyseventeen' ),
+	) ); }
+8. Functions.php->
+//This Code Uses To Register Side-bar in Widget. {
+function twentyseventeen_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Blog Sidebar', 'twentyseventeen' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Add widgets here.', 'twentyseventeen' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'twentyseventeen_widgets_init' ); }.
+9. Call Nav_menu {
+<?php wp_nav_menu( array( 'theme_location' => 'menu-1' ) ); ?>
+}
+/* Start Themes Functions/ Options */
+
+1. <html <?php language_attributes(); ?> >
+2. <?php bloginfo( 'charset' ); ?>
+3. <?php global $globalvariable; ?>
+4. <?php echo get_template_directory_uri(); ?> OR <?php echo bloginfo('template_directory') ?>
+5. Favicon-> <link rel="apple-touch-icon" sizes="180x180" href="abc.png" ?>">
+6. Conditional Social Media-> 
+{ 
+<?php 
+   $facebook = $globalvariable['facebook'];
+?>
+<a href="<?php echo $facebook; ?>" target="_blank">
+   <?php if ($facebook != ''): ?>
+     <i class="fa fa-facebook-square" aria-hidden="true"></i>
+   <?php endif ?>
+</a>
+}
+
+
+/* End Themes Functions/ Options */
+/* Add to cart button text change with functions.php */
+add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_product_add_to_cart_text' );
+/**
+ * custom_woocommerce_template_loop_add_to_cart
+*/
+function custom_woocommerce_product_add_to_cart_text() {
+	global $product;
+	
+	$product_type = $product->product_type;
+	
+	switch ( $product_type ) {
+		case 'external':
+			return __( 'Buy product', 'woocommerce' );
+		break;
+		case 'grouped':
+			return __( 'View products', 'woocommerce' );
+		break;
+		case 'simple':
+			return __( 'Add to cart', 'woocommerce' );
+		break;
+		case 'variable':
+			return __( 'Select options', 'woocommerce' );
+		break;
+		default:
+			return __( 'Read more', 'woocommerce' );
+	}
+	
+}
+/* End Add to cart button text change with functions.php */
+
+//Simple post
+function gallery() {
+	$labels = array(
+		'name'                  => _x( 'Gallery', 'Post Type General Name', 'Gallery' ),
+		'singular_name'         => _x( 'Gallery', 'Post Type Singular Name', 'Gallery' ),
+		'menu_name'             => __( 'Gallery', 'Gallery' ),
+		'name_admin_bar'        => __( 'Gallery', 'Gallery' ),
+		'archives'              => __( 'Gallery Archives', 'Gallery' ),
+		'parent_item_colon'     => __( 'Parent Gallery:', 'Gallery' ),
+		'all_items'             => __( 'All Gallery', 'Gallery' ),
+		'add_new_item'          => __( 'Add New Gallery', 'Gallery' ),
+		'add_new'               => __( 'Add Gallery', 'Gallery' ),
+		'new_item'              => __( 'New Gallery', 'Gallery' ),
+		'edit_item'             => __( 'Edit Gallery', 'Gallery' ),
+		'update_item'           => __( 'Update Gallery', 'Gallery' ),
+		'view_item'             => __( 'View Gallery', 'Gallery' ),
+		'search_items'          => __( 'Search Gallery', 'Gallery' ),
+		'not_found'             => __( 'Not found', 'Gallery' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'Gallery' ),
+		'featured_image'        => __( 'Featured Image', 'Gallery' ),
+		'set_featured_image'    => __( 'Set featured image', 'Gallery' ),
+		'remove_featured_image' => __( 'Remove featured image', 'Gallery' ),
+		'use_featured_image'    => __( 'Use as featured image', 'Gallery' ),
+		'insert_into_item'      => __( 'Insert into item', 'Gallery' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'Gallery' ),
+		'items_list'            => __( 'Items list', 'Gallery' ),
+		'items_list_navigation' => __( 'Items list navigation', 'Gallery' ),
+		'filter_items_list'     => __( 'Filter items list', 'Gallery' ),
+	);
+	$args = array(
+		'label'                 => __( 'Gallery', 'Gallery' ),
+		'description'           => __( 'Post Type Description', 'Gallery' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
+		//'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-admin-media',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,		
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'gallery', $args );
+}
+add_action( 'init', 'gallery', 0 );
+========================================================================
+--------------------------Redex call------------------------------------
+========================================================================
+<?php
+	$heading_who_we_are = $beautyfastandgo['whoweare_heading'];
+	$subheading_who_we_are = $beautyfastandgo['whoweare_subheading'];
+	$content_who_we_are = $beautyfastandgo['whoweare_contant'];
+	$image_who_we_are = $beautyfastandgo['whoweare_image']['url'];
+	$who_we_are_viewmore = $beautyfastandgo['whoweare_button'];
+?>
+<?php echo $heading_who_we_are; ?>
+=========================================================================
+------------------------------Simple Post call with while loop-----------
+=========================================================================
+<?php
+	$args=array('post_type' => 'thumbnailimage','order' => 'ASC','posts_per_page'=>6,) ;
+	$the_qyery= new WP_Query($args);
+	if ($the_qyery->have_posts()) :
+	while ( $the_qyery->have_posts() ) : $the_qyery->the_post();?>
+		<div class="col-md-2 col-sm-4 col-ip-6 col-xs-12">
+			<a href="" class="item-adv <?php the_field('thumbnail_image_color') ; ?>">
+				<?php  the_post_thumbnail('large') ;?>
+				<div class="content">
+					<h2 class="title"><?php the_title() ; ?></h2>
+					<p><?php the_content() ; ?></p>
+				</div>
+			</a>
+		</div>
+    	<?php endwhile;
+	endif ;  ?>  
+<?php the_permalink() ; ?>
+<?php echo get_the_date(); ?>
+<?php the_author(); ?>
+<?php get_sidebar();?>
+============================================================================
+-----------------------------PHP Shot Code function-------------------------
+============================================================================
+<?php echo do_shortcode( '[rev_slider alias="rev_slider"]' ); ?>  
+============================================================================
+-------------------------Advance custom feild call--------------------------
+============================================================================
+<?php the_field('Why_Choose_Us_Description') ; ?>
+============================================================================
+-------------------------------Woocomerce product Call----------------------
+============================================================================
+<?php
+		$args = array(
+			'post_type' => 'product',
+			'posts_per_page' => 12
+			);
+		$loop = new WP_Query( $args );
+		if ( $loop->have_posts() ) {
+			while ( $loop->have_posts() ) : $loop->the_post();
+				wc_get_template_part( 'content', 'product' );
+			endwhile;
+		} else {
+			echo __( 'No products found' );
+		}
+		wp_reset_postdata();
+	?>
+=============================================================================
+----------------------------Base URL-----------------------------------------
+=============================================================================
+<?php echo esc_url( get_template_directory_uri() ); ?>/
+=============================================================================
+---------------------------------Header.php----------------------------------
+=============================================================================
+<?php
+/**
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package beautyfastandgo
+ */
+
+?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>">
+<title><?php bloginfo( 'title' ); ?></title>
+<?php wp_head(); ?>
+<body <?php body_class(); ?>>
+<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+==============================================================================
+--------------------------------------footer.php------------------------------
+==============================================================================
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package beautyfastandgo
+ */
+
+?>
+<?php global $beautyfastandgo; ?>
+<footer class="footer">
+<?php wp_footer(); ?>
+================================================================================
+---------------------------------------index.php--------------------------------
+================================================================================
+<?php
+/**
+ * The main template file
+ * Template Name: Home
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package beautyfastandgo
+ */
+
+get_header(); ?>
+<?php get_footer();?>
+=================================================================================
+------------------------------------Default Template ----------------------------
+=================================================================================
+<?php
+
+ /**
+ * Template Name: Default
+ *
+ * @package beautyfastandgowp
+ * @subpackage beautyfastandgowp
+ * @since beautyfastandgowp
+ */
+
+?>
+<?php
+include("header.php"); ?>
+<div class="container">
+<!-- Home Template -->
+
+      
+		<?php
+		// Start the loop.
+		while ( have_posts() ) : the_post();
+
+			// Include the page content template.
+			get_template_part( 'template-parts/content', 'page' );
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) {
+				comments_template();
+			}
+
+			// End of the loop.
+		endwhile;
+		?>
+<!-- End Home Template -->
+</div>
+<?php get_footer(); ?>
+=============================================================================================
+--------------------------------------Template-----------------------------------------------
+=============================================================================================
+<?php
+/**
+ * Template Name: Our Services
+ **/
+get_header();
+============================================================================================= 
+----------------------------------------widgets create---------------------------------------
+=============================================================================================
+function footer_one() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer One', 'beautyfastandgo' ),
+		'id'            => 'sidebar-2',
+		'description'   => esc_html__( 'Add widgets here.', 'beautyfastandgo' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'footer_one' );
+=============================================================================================
+-------------------------------------widget call---------------------------------------------
+=============================================================================================
+<div class="col-sm-4 col-xs-12">
+	<?php if ( is_active_sidebar( 'sidebar-2' )  ) : ?>
+ 	<?php dynamic_sidebar( 'sidebar-2' ); ?>
+ 	<?php endif; ?>
+	<!-- /.widget -->
+</div>
+==============================================================================================
+-----------------------------------include function-------------------------------------------
+==============================================================================================
+<?php include "breadcrumb.php"; ?>
+==============================================================================================
+------------------------------------------'woocommerce_support'-------------------------------
+==============================================================================================
+//woocommerce support
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+==============================================================================================
+------------------------remove_action & add_action--------------------------------------------
+==============================================================================================
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+add_action( 'woocommerce_before_shop_loop_item_title', 'add_thumb_wrapper', 9);
+function  add_thumb_wrapper(){
+echo '<div class="thumb">';
+}
+==============================================================================================
+--------------------------------Redux Frame Work----------------------------------------------
+==============================================================================================
+//Redux Frame Work
+if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/theme-options/ReduxCore/framework.php' ) ) {
+    require_once( dirname( __FILE__ ) . '/theme-options/ReduxCore/framework.php' );
+}
+if ( !isset( $sante ) && file_exists( dirname( __FILE__ ) . '/theme-options/core/theme_option.php' ) ) {
+    require_once( dirname( __FILE__ ) . '/theme-options/core/theme_option.php' );
+}
+==============================================================================================
+--------------------------------------Gravity form Short Code---------------------------------
+==============================================================================================
+[gravityform id=1 title=false description=false ajax=true tabindex=49]
+==============================================================================================
+----------------------------------------------------------------------------------------------
+====================================ACF PRO==========================================================
+Key: chkb3JkZXJfaWQ9OTg5NzN8dHlwZT1kZXZlbG9wZXJ8ZGF0ZT0yMDE3LTAyLTA2IDEwOjUwOjAw
+===============================================================================================
+<?php echo esc_url( get_template_directory_uri() ); ?>/
+
+active
+
+---
+<?php
+	$args=array('post_type' => 'slider','order' => 'ASC') ;
+	$the_qyery= new WP_Query($args);
+	if ($the_qyery->have_posts()) :
+	while ( $the_qyery->have_posts() ) : $the_qyery->the_post();?>
+	  
+      <div class="item<?php the_field('active') ; ?>">
+        <?php the_content(); ?>
+        <?php the_post_thumbnail() ; ?>
+		 </div>
+		
+	<?php endwhile;
+	endif ;  ?>	
+
+
+241x371
+
+
+
+<!-- Post and Slider Dynamic Section -->
+
+<section class="slider border-bottom line tp-banner-fullscreen-container">
+            <div class="tp-banner">
+                <ul>
+
+<?php 
+query_posts( 'cat=3&posts_per_page=10&order=desc' );
+while ( have_posts() ) : the_post();
+ ?>
+
+
+                    <li data-delay="7000" data-transition="fade" data-slotamount="7" data-masterspeed="2000">
+
+                        <div class="container">
+                            <h2 class="tp-caption tp-resizeme lft skewtotop title bold white" data-x="02" data-y="181" data-speed="1000"
+                            data-start="1700" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn">
+                                <strong><?php //the_title();?></strong>
+                            </h2>
+                            <h2 class="tp-caption tp-resizeme lft skewtotop title bold white" data-x="02" data-y="241" data-speed="1200"
+                            data-start="1900" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power1.easeIn">
+                                <strong><?php the_content();?></strong>
+                            </h2> 
+                        </div>
+                       <?php the_post_thumbnail('full'); ?>
+
+
+                    </li>
+
+<?php
+endwhile;
+// Reset Query
+wp_reset_query();
+?>
+                    
+                </ul>
+                <div class="tp-bannertimer"></div>
+            </div>
+        </section>
+
+
+<!-- End Dynamic slider Or Any Section -->
+
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+
+//active Menu Item Class (Color, background)
+function special_nav_class ($classes, $item) {
+    if (in_array('current-menu-item', $classes) ){
+        $classes[] = 'active ';
+    }
+    return $classes;
+}
+
+//Page Contents Dynamic
+<?php $the_query = new WP_Query( 'page_id=75' ); ?>
+    <?php while ($the_query -> have_posts()) : $the_query -> the_post();  ?>
+    	<h2><?php the_title(); ?><h2>
+	<p><?php the_content(); ?></p>
+	<?php the_post_thumbnail(); ?>
+<?php endwhile(); ?>
+//end Page Content Dynamic Code
+
+
+
+//If user is logged in than Products Will be Showing 
+function wpse_131562_redirect() {
+    if (
+        ! is_user_logged_in()
+        && (is_woocommerce() || is_cart() || is_checkout())
+    ) {
+        // feel free to customize the following line to suit your needs
+        wp_redirect(home_url());
+        exit;
+    }
+}
+add_action('template_redirect', 'wpse_131562_redirect');
+
+//Different menus for logged-in users
+This example would cause a menu to show for logged-in users and a different menu for users not logged-in.
+wp_nav_menu( array(
+    'theme_location' => is_user_logged_in() ? 'logged-in-menu' : 'logged-out-menu'
+) );
+
+//Menu Shortcode generator
+function get_menu($args){
+    $menu = isset($atts['menu']) ? $atts['menu'] : '';
+    ob_start();
+    wp_nav_menu(array(
+        'menu' => $menu
+    ) );
+    return ob_get_clean();
+}
+add_shortcode('get_menu', 'get_menu');
+
+Usage Example:
+[get_menu menu="Main Menu"]
+
+
+!--Gallery Projects Section-->
+<?php
+$args=array('post_type' => 'gallery', 'posts_per_page'=>-1, 'order' => 'ASC', 'post_status' => 'publish',) ;
+$the_qyery= new WP_Query($args);?>
+<?php if ($the_qyery->have_posts()) : ?>
+<section class="projects-section">
+    <div class="auto-container">
+        <!--Sortable Gallery-->
+        <div class="mixitup-gallery">
+            <!--Filter-->
+            <div class="filters clearfix">
+                <ul class="filter-tabs filter-btns">
+                   <?php
+                   $tax_terms = get_terms('gal_cat', array('hide_empty' => '0'));
+                   foreach ( $tax_terms as $tax_term ):  ?>
+                    
+                   <li class="filter" data-role="button" data-filter=".<?php echo $tax_term->slug ?>"><?php echo $tax_term->name ?></li>
+
+                    <?php endforeach;  ?>
+                </ul>
+            </div>
+            <div class="filter-list row clearfix">
+                <!--Default Portfolio Item-->
+                <?php while ( $the_qyery->have_posts() ) : $the_qyery->the_post();
+                    $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                ?>
+                <div class="default-portfolio-item mix <?php $terms = get_the_terms( $post->ID , 'gal_cat' );
+                    foreach ( $terms as $term ) { echo $term->slug . ' '; } ?> col-md-4 col-sm-6 col-xs-12">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            <img src="<?php echo $image; ?>" alt="">
+                        </figure>
+                        <div class="overlay-box">
+                            <div class="line-box"></div>
+                            <div class="over-content">
+                                <div class="subtitle"></div>
+                                <h4><?php the_title(); ?></h4>
+                                <div class="link-box">
+                                    <a href="<?php the_permalink(); ?>"><span class="flaticon-arrows-4"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endwhile; wp_reset_query(); ?>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<!--Projects Section-->
+
+<!--- Functions.php --->
+
+
+/* Register Post Type Gallery */
+add_action( 'init', 'codex_gallery_init' );
+function codex_gallery_init() {
+    $labels = array(
+        'name'               => _x( 'Gallery', 'post type general name', 'your-plugin-textdomain' ),
+        'singular_name'      => _x( 'Gallery', 'post type singular name', 'your-plugin-textdomain' ),
+        'add_new'            => 'Add Gallery',
+        'all_items'          => 'All Gallery',
+        'edit_item'          =>'Edit Gallery',
+    );
+    $args = array(
+        'labels'             => $labels,
+        'description'        => __( 'Gallery.', 'your-plugin-textdomain' ),
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'gallery' ),
+        'hierarchical'       => false,
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'menu_position'      => 5,
+        'menu_icon'          =>'dashicons-format-gallery',
+        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'comments' )
+    );
+    register_post_type( 'gallery', $args );
+}
+/* Register taxonomy Type gallery_cat */
+add_action( 'init', 'create_gallery_cat_taxonomy' );
+function create_gallery_cat_taxonomy() {
+    register_taxonomy(
+        'gal_cat',
+        'gallery',
+        array(
+            'label' => 'Gallery Category',
+            'hierarchical' => true,
+            'rewrite' => array( 'slug' => 'gal_cat' ),
+        )
+    );
+}
+register_post_type( 'gallery' , $args );
+flush_rewrite_rules();
+
+<!---End Functions Texanomy--->
+
+
+//Post Content Limit
+<?php   
+  add_filter("the_content", "plugin_myContentFilter");
+
+  function plugin_myContentFilter($content)
+  {
+    // Take the existing content and return a subset of it
+    return substr($content, 0, 300);
+  }
+?>
+//End Post Content Limit
+//Pagination
+//Top Page Loop//
+<?php
+$cid = $_GET['cat_id'];
+if (get_query_var('paged')) {
+  $paged = get_query_var('paged');
+}
+elseif (get_query_var('page')) { // 'page' is used instead of 'paged' on Static Front Page
+$paged = get_query_var('page');
+} else {
+  $paged = 1;
+}
+if($cid){
+  $args = array(
+    'post_type' => 'post',
+    'fields' => 'ids',
+    'tax_query' => array(
+      'numberposts' => -1,
+      'post_status' => null,
+      'post_parent' => null,
+      'posts_per_page' => 6,
+      'paged' => $paged
+      ) 
+    );
+}
+else{
+  $args=array(
+    'post_type' => 'post',
+    'numberposts' => -1,
+    'post_status' => null,
+    'post_parent' => null,
+    'posts_per_page' => 3,
+    'paged' => $paged
+    );
+}
+//$args=array('post_type' => 'post', 'posts_per_page'=>1, 'order' => 'ASC', 'post_status' => 'publish',) ;
+$the_qyery= new WP_Query($args);?>
+<?php if ($the_qyery->have_posts()) :
+ while ( $the_qyery->have_posts() ) : $the_qyery->the_post();?>
+<ul>
+<?php if ($the_qyery->max_num_pages > 1) :
+      $orig_query = $wp_query;
+      $wp_query = $the_qyery;
+      ?>
+      <?php
+      if (function_exists('wp_bootstrap_pagination')){
+        wp_bootstrap_pagination();
+      }
+      ?>
+      <?php $wp_query = $orig_query; ?>
+      <?php endif; ?>
+      <?php  wp_reset_postdata();?>
+</ul>
+//End Pagination
+//Post No. Of Views Function//
+/*==== View System =====*/
+
+function getPostViews($postID){
+$count_key = 'post_views_count';
+$count = get_post_meta($postID, $count_key, true);
+if($count==''){
+delete_post_meta($postID, $count_key);
+add_post_meta($postID, $count_key, '0');
+return "0 View";
+}
+return $count.' Views';
+}
+ 
+function setPostViews($postID) {
+$count_key = 'post_views_count';
+$count = get_post_meta($postID, $count_key, true);
+if($count==''){
+$count = 0;
+delete_post_meta($postID, $count_key);
+add_post_meta($postID, $count_key, '0');
+}else{
+$count++;
+update_post_meta($postID, $count_key, $count);
+}
+}
+
+Call => <?php setPostViews(get_the_ID()); ?> OR <?php echo getPostViews(get_the_ID()); ?>
+
+/*==== View System =====*/
+
+/*Post_time_format*/
+<?php the_time('l, F jS, Y'); ?>
+/* Woocommerce Cart Dynamic */
+In Header=>
+<?php global $woocommerce; 
+
+ if($woocommerce->cart->get_cart_total()=='0') { ?>
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/empty_cart.png" alt="" width="30" height="30">
+ <?php }else{   ?>
+ <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/full_cart.png" alt="" width="30" height="30">
+    <?php } ?>
+
+<a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >Your Cart : <?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
+
+In Functions.php=>
+add_filter('add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment');
+
+
+
+function woocommerce_header_add_to_cart_fragment( $fragments ) {
+
+global $woocommerce;
+
+ob_start();
+
+
+if($woocommerce->cart->get_cart_total()=='0') {  ?>
+
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/empty_cart.png" alt="" width="30" height="30">
+<?php
+    }else{ ?>
+    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/full_cart.png" alt="" width="30" height="30">
+        <?php }
+ ?>
+
+<a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >Your Cart : <?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
+
+<?php
+
+$fragments['a.cart-contents'] = ob_get_clean();
+
+return $fragments;
+
+}
+

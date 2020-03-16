@@ -1,0 +1,48 @@
+<!-- Photo gallery -->
+<?php
+$args=array('post_type' => 'gallery', 'posts_per_page'=>-1, 'order' => 'ASC', 'post_status' => 'publish',) ;
+$the_qyery= new WP_Query($args);?>
+<?php if ($the_qyery->have_posts()) : ?>
+		<section class="beautypress-photo-gallery-section beautypress-version-2 beautypress-padding-bottom">
+			<div class="container">
+				<div class="beautypress-section-headinig beautypress-version-2">
+					<h2><?php the_field('photo_gallery_sub_heading'); ?></h2>
+					<h3><?php the_field('photo_gallery_heading'); ?></h3>
+					<img src="<?php echo get_template_directory_uri(); ?>/img/section-heading-separetor.png" alt="">
+				</div>
+				<div class="beautypress-photo-gallery-wraper">
+					<div class="beautypress-portfolio-nav portfolio-menu">                  
+						<ul id="filters" class="option-set clearfix" data-option-key="filter">
+				<?php
+                   $i=0;
+                   $tax_terms = get_terms('gal_cat', array('hide_empty' => '0'));
+                   foreach ( $tax_terms as $tax_term ):  ?>
+                   <li><a href="#" data-option-value=".<?php echo $tax_term->slug ?>" class="<?php if($i=='0') { $i=1; echo 'selected'; }?>"><?php echo $tax_term->name ?></a></li>
+               <?php endforeach;  ?>
+						</ul>
+					</div>
+					<div class="beautypress-photo-gallery-grid">
+					<?php while ( $the_qyery->have_posts() ) : $the_qyery->the_post();
+                   		$image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                	?>
+						<div class="beautypress-photo-gallery-grid-item <?php $terms = get_the_terms( $post->ID , 'gal_cat' );
+                    foreach ( $terms as $term ) { echo $term->slug . ' '; } ?>">
+							<div class="beautypress-single-photo-gallery">
+								<img src="<?php the_field('image'); ?>" alt="">
+								<div class="beautypress-photo-gallery-content">
+									<a href="<?php the_field('image'); ?>" class="beautypress-image-popup beautypress-iocn-btn full-round-btn bg-color-cyan">
+										<i class="fa fa-eye"></i>
+									</a>
+									
+								</div><!-- .beautypress-photo-gallery-content END -->
+								<div class="beautypress-gallery-overlay"></div>
+							</div><!-- .beautypress-single-photo-gallery END -->
+						</div><!-- .beautypress-photo-gallery-grid-item END -->
+					<?php endwhile; wp_reset_query(); ?>
+					</div><!-- .beautypress-photo-gallery-grid END -->
+				</div>
+			</div>
+		</section>
+<?php endif; wp_reset_query(); ?>
+		<!-- .beautypress-photo-gallery-section END -->
+<!-- Photo gallery -->

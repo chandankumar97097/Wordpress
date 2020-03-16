@@ -1,0 +1,75 @@
+<!-- Gallery Section -->
+<section class="gallery-section">
+        <div class="auto-container">
+            <div class="sec-title text-center">
+                <h2>Our Latest Works</h2>
+                <div class="separator"><span class="flaticon-settings-2"></span></div>
+            </div>
+
+             <!--MixitUp Galery-->
+            <div class="mixitup-gallery">
+                <!--Filter-->
+                <div class="filters text-center clearfix">                     
+                    <ul class="filter-tabs filter-btns clearfix">
+
+
+                     <?php $terms = get_terms( array(
+                                      'taxonomy' => 'ser_cat',
+                                      'hide_empty' => false
+                        ) );
+                    
+                        foreach($terms as $term){
+                        ?>
+
+
+
+        <li class=" filter" data-role="button" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name;?></li>
+
+                        <?php } ?>
+                    </ul>
+                </div>
+
+                <div class="filter-list row clearfix">
+                   
+                    <?php    
+                        global $post;
+                            $args = array( 
+                                'posts_per_page'  =>   6 ,
+                                'order'           => 'DESC',
+                                'orderby'         => 'id',
+                                'post_type'       => 'Services',
+                                    
+                                );
+                                $the_query = new WP_Query( $args ); 
+                    ?>  
+
+                        <?php while ( $the_query->have_posts() ) : $the_query->the_post(); 
+                        $allterms = get_the_terms($post->ID, 'ser_cat' );
+                       
+                        ?>
+
+
+                    <!-- Project item -->
+                    <div class="gallery-item mix .<?php foreach($allterms as $myterms){ echo $myterms->slug.' '; }?> col-md-4 col-sm-6 col-xs-12">
+                        <div class="image-box">
+                            <figure class="image"><img src="<?php the_post_thumbnail_url(); ?>" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="icon-box">
+                                    <a href="<?php the_field('read_more_button_link'); ?>" class="link"><span class="icon fa fa-link"></span></a>
+                                    <a href="<?php the_post_thumbnail_url(); ?>" class="link" data-fancybox="gallery" data-caption=""><span class="icon fa fa-expand-arrows-alt"></span></a>
+                                    <h3><a href="<?php the_field('read_more_button_link'); ?>">
+                                        <?php the_field('service_name'); ?>
+                                    </a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endwhile; ?>
+
+                </div>
+               
+            </div>
+        </div>
+    </section>
+<!-- End Gallery section -->

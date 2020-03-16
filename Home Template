@@ -1,0 +1,779 @@
+<?php
+/**
+* Template Name: Home Template
+*/
+get_header(); ?>
+
+	<!-- Section: home -->
+    <?php if( have_rows('banner') ): ?>
+    <section id="home"> 
+        <!-- Slider Revolution Start -->
+        <div class="rev_slider_wrapper">
+            <div class="rev_slider" data-version="5.0">
+              <ul>
+
+                <!-- SLIDE 1 -->
+                <?php while( have_rows('banner') ): the_row(); 
+                // vars
+                $align = get_sub_field('align');
+                $image = get_sub_field('image');
+                $heading1 = get_sub_field('heading1');
+                $heading2 = get_sub_field('heading2');
+                $sub_heading = get_sub_field('sub_heading');
+                $link = get_sub_field('button_link');
+                $name = get_sub_field('button_name');
+                ?>
+                <?php if( $align == 'left'){ ?>
+                <li data-index="rs-1" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="<?php echo $image; ?>" data-rotate="0" data-saveperformance="off" data-title="Slide 1" data-description="">
+                  <!-- MAIN IMAGE -->
+                  <img src="<?php echo $image; ?>"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
+                  <!-- LAYERS -->
+
+                  <!-- LAYER NR. 1 -->
+                  <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway"
+                    id="rs-1-layer-1"
+
+                    data-x="['left']"
+                    data-hoffset="['30']"
+                    data-y="['middle']"
+                    data-voffset="['-110']" 
+                    data-fontsize="['100']"
+                    data-lineheight="['110']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 7; white-space: nowrap; font-weight:700;"><?php echo $heading1; ?>
+                  </div>
+
+                  <!-- LAYER NR. 2 -->
+                  <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway bg-theme-colored-transparent border-left-theme-color-2-6px pl-20 pr-20"
+                    id="rs-1-layer-2"
+
+                    data-x="['left']"
+                    data-hoffset="['35']"
+                    data-y="['middle']"
+                    data-voffset="['-25']" 
+                    data-fontsize="['35']"
+                    data-lineheight="['54']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 7; white-space: nowrap; font-weight:600;"><?php echo $heading2; ?>
+                  </div>
+
+                  <!-- LAYER NR. 3 -->
+                  <div class="tp-caption tp-resizeme text-white" 
+                    id="rs-1-layer-3"
+
+                    data-x="['left']"
+                    data-hoffset="['35']"
+                    data-y="['middle']"
+                    data-voffset="['35']"
+                    data-fontsize="['20']"
+                    data-lineheight="['28']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1400" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;"><?php echo $sub_heading; ?>
+                  </div>
+
+                  <!-- LAYER NR. 4 -->
+                  <div class="tp-caption tp-resizeme" 
+                    id="rs-1-layer-4"
+
+                    data-x="['left']"
+                    data-hoffset="['35']"
+                    data-y="['middle']"
+                    data-voffset="['100']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1400" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-colored btn-lg btn-flat btn-theme-colored border-left-theme-color-2-6px pl-20 pr-20" href="<?php echo $link; ?>"><?php echo $name; ?></a> 
+                  </div>
+                </li>
+                <?php }elseif( $align == 'center'){ ?>
+                <!-- SLIDE 2 -->
+                <li data-index="rs-2" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="<?php echo $image; ?>" data-rotate="0" data-saveperformance="off" data-title="Slide 2" data-description="">
+                  <!-- MAIN IMAGE -->
+                  <img src="<?php echo $image; ?>"  alt=""  data-bgposition="center 40%" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
+                  <!-- LAYERS -->
+
+                  <!-- LAYER NR. 1 -->
+                  <div class="tp-caption tp-resizeme text-uppercase  bg-theme-colored-transparent text-white font-raleway border-left-theme-color-2-6px border-right-theme-color-2-6px pl-30 pr-30"
+                    id="rs-2-layer-1"
+                  
+                    data-x="['center']"
+                    data-hoffset="['0']"
+                    data-y="['middle']"
+                    data-voffset="['-90']" 
+                    data-fontsize="['28']"
+                    data-lineheight="['54']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 7; white-space: nowrap; font-weight:400; border-radius: 30px;"><?php echo $heading1; ?>
+                  </div>
+
+                  <!-- LAYER NR. 2 -->
+                  <div class="tp-caption tp-resizeme text-uppercase bg-theme-colored-transparent text-white font-raleway pl-30 pr-30"
+                    id="rs-2-layer-2"
+
+                    data-x="['center']"
+                    data-hoffset="['0']"
+                    data-y="['middle']"
+                    data-voffset="['-20']"
+                    data-fontsize="['48']"
+                    data-lineheight="['70']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 7; white-space: nowrap; font-weight:700; border-radius: 30px;"><?php echo $heading2; ?> swipe . 
+                  </div>
+
+                  <!-- LAYER NR. 3 -->
+                  <div class="tp-caption tp-resizeme text-white text-center" 
+                    id="rs-2-layer-3"
+
+                    data-x="['center']"
+                    data-hoffset="['0']"
+                    data-y="['middle']"
+                    data-voffset="['50']"
+                    data-fontsize="['20']"
+                    data-lineheight="['28']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1400" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;"><?php echo $sub_heading; ?>
+                  </div>
+
+                  <!-- LAYER NR. 4 -->
+                  <div class="tp-caption tp-resizeme" 
+                    id="rs-2-layer-4"
+
+                    data-x="['center']"
+                    data-hoffset="['0']"
+                    data-y="['middle']"
+                    data-voffset="['115']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1400" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-default btn-circled btn-transparent pl-20 pr-20" href="<?php echo $link; ?>"><?php echo $name; ?></a> 
+                  </div>
+                </li>
+                <?php }else{ ?>
+                <!-- SLIDE 3 -->
+                <li data-index="rs-3" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="<?php echo $image; ?>" data-rotate="0" data-saveperformance="off" data-title="Slide 3" data-description="">
+                  <!-- MAIN IMAGE -->
+                  <img src="<?php echo $image; ?>"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
+                  <!-- LAYERS -->
+
+                  <!-- LAYER NR. 1 -->
+                  <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway bg-theme-colored-transparent border-right-theme-color-2-6px pr-20 pl-20"
+                    id="rs-3-layer-1"
+
+                    data-x="['right']"
+                    data-hoffset="['30']"
+                    data-y="['middle']"
+                    data-voffset="['-90']" 
+                    data-fontsize="['64']"
+                    data-lineheight="['72']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 7; white-space: nowrap; font-weight:600;"><?php echo $heading1; ?> 
+                  </div>
+
+                  <!-- LAYER NR. 2 -->
+                  <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway"
+                    id="rs-3-layer-2"
+
+                    data-x="['right']"
+                    data-hoffset="['35']"
+                    data-y="['middle']"
+                    data-voffset="['-25']" 
+                    data-fontsize="['32']"
+                    data-lineheight="['54']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1000" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 7; white-space: nowrap; font-weight:600;"><?php echo $heading2; ?> 
+                  </div>
+
+                  <!-- LAYER NR. 3 -->
+                  <div class="tp-caption tp-resizeme text-white text-right" 
+                    id="rs-3-layer-3"
+
+                    data-x="['right']"
+                    data-hoffset="['35']"
+                    data-y="['middle']"
+                    data-voffset="['30']"
+                    data-fontsize="['20']"
+                    data-lineheight="['28']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;s:500"
+                    data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
+                    data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
+                    data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1400" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;"><?php echo $sub_heading; ?>
+                  </div>
+
+                  <!-- LAYER NR. 4 -->
+                  <div class="tp-caption tp-resizeme" 
+                    id="rs-3-layer-4"
+
+                    data-x="['right']"
+                    data-hoffset="['35']"
+                    data-y="['middle']"
+                    data-voffset="['95']"
+                    data-width="none"
+                    data-height="none"
+                    data-whitespace="nowrap"
+                    data-transform_idle="o:1;"
+                    data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+                    data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+                    data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                    data-start="1400" 
+                    data-splitin="none" 
+                    data-splitout="none" 
+                    data-responsive_offset="on"
+                    style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-colored btn-lg btn-flat btn-theme-colored btn-theme-colored border-right-theme-color-2-6px pl-20 pr-20" href="<?php echo $link; ?>"><?php echo $name; ?></a> 
+                  </div>
+                </li>
+                <?php } ?>
+                <?php endwhile; ?>
+
+                
+
+                
+
+              </ul>
+            </div>
+            <!-- end .rev_slider -->
+        </div>
+        <!-- end .rev_slider_wrapper -->
+        <script>
+            $(document).ready(function(e) {
+              $(".rev_slider").revolution({
+                sliderType:"standard",
+                sliderLayout: "auto",
+                dottedOverlay: "none",
+                delay: 5000,
+                navigation: {
+                    keyboardNavigation: "off",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "off",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "horizontal",
+                        drag_block_vertical: false
+                    },
+                  arrows: {
+                    style:"zeus",
+                    enable:true,
+                    hide_onmobile:true,
+                    hide_under:600,
+                    hide_onleave:true,
+                    hide_delay:200,
+                    hide_delay_mobile:1200,
+                    tmp:'<div class="tp-title-wrap">    <div class="tp-arr-imgholder"></div> </div>',
+                    left: {
+                      h_align:"left",
+                      v_align:"center",
+                      h_offset:30,
+                      v_offset:0
+                    },
+                    right: {
+                      h_align:"right",
+                      v_align:"center",
+                      h_offset:30,
+                      v_offset:0
+                    }
+                  },
+                  bullets: {
+                    enable:true,
+                    hide_onmobile:true,
+                    hide_under:600,
+                    style:"metis",
+                    hide_onleave:true,
+                    hide_delay:200,
+                    hide_delay_mobile:1200,
+                    direction:"horizontal",
+                    h_align:"center",
+                    v_align:"bottom",
+                    h_offset:0,
+                    v_offset:30,
+                    space:5,
+                    tmp:'<span class="tp-bullet-img-wrap">  <span class="tp-bullet-image"></span></span><span class="tp-bullet-title">{{title}}</span>'
+                  }
+                },
+                responsiveLevels: [1240, 1024, 778],
+                visibilityLevels: [1240, 1024, 778],
+                gridwidth: [1170, 1024, 778, 480],
+                gridheight: [650, 768, 960, 720],
+                lazyType: "none",
+                parallax: {
+                    origo: "slidercenter",
+                    speed: 1000,
+                    levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 100, 55],
+                    type: "scroll"
+                },
+                shadow: 0,
+                spinner: "off",
+                stopLoop: "on",
+                stopAfterLoops: 0,
+                stopAtSlide: -1,
+                shuffle: "off",
+                autoHeight: "off",
+                fullScreenAutoWidth: "off",
+                fullScreenAlignForce: "off",
+                fullScreenOffsetContainer: "",
+                fullScreenOffset: "0",
+                hideThumbsOnMobile: "off",
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                debugMode: false,
+                fallbacks: {
+                    simplifyAll: "off",
+                    nextSlideOnWindowFocus: "off",
+                    disableFocusListener: false,
+                }
+              });
+            });
+        </script>
+        <!-- Slider Revolution Ends -->
+    </section>
+    <?php endif; ?>
+    
+    
+    <!-- Section: About -->
+    <?php if( have_rows('about_section_box') ): ?>
+    <section id="about">
+      <div class="container pb-sm-40 pb-70">
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+              <h2 class="text-uppercase text-center mt-0"><?php the_field('about_section_title'); ?></h2>
+              <p class="lead text-center pl-sm-10 pr-sm-10 pl-100 mb-0 pr-100"><?php the_field('about_section_sub_title'); ?></p>
+              <div class="row mt-20">
+                <?php while( have_rows('about_section_box') ): the_row(); 
+                    // vars
+                    $image = get_sub_field('image');
+                    $title = get_sub_field('title');
+                    $content = get_sub_field('content');
+                    $link = get_sub_field('button_link');
+                    $name = get_sub_field('button_name');
+                ?>
+                <div class="col-md-4 wow fadeInUp" data-wow-duration="1s">
+                  <div class="mb-sm-30">
+                    <img class="img-fullwidth" src="<?php echo $image; ?>" alt="">
+                    <h4 class="letter-space-1 mt-10"><?php echo $title; ?></h4>
+                    <p><?php echo $content; ?></p>
+                    <a href="<?php echo $link; ?>" class="btn btn-sm btn-theme-colored"><?php echo $name; ?></a>
+                  </div>
+                </div>
+                <?php endwhile; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <?php endif; ?>
+    <!-- Divider: Funfact -->
+    <?php if( have_rows('counter') ): ?>
+    <section class="divider parallax layer-overlay" data-bg-img="<?php the_field('counter_bg_image'); ?>" data-parallax-ratio="0.7">
+      <div class="container">
+        <div class="row">
+            <?php while( have_rows('counter') ): the_row(); 
+
+                // vars
+                $icon = get_sub_field('icon');
+                $title = get_sub_field('title');
+                $data = get_sub_field('data_value');
+            ?>
+            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
+                <div class="funfact text-center">
+                  <i class="<?php echo $icon; ?> mt-5 text-white"></i>
+                  <h2 data-animation-duration="2000" data-value="<?php echo $data ?>" class="animate-number text-white mt-0 font-38 font-weight-500">0</h2>
+                  <h4 class="text-white text-uppercase"><?php echo $title; ?></h4>
+                </div>
+            </div>
+            <?php endwhile; ?>
+        </div>
+      </div>
+    </section>
+    <?php endif; ?>
+
+    <!-- Section: Gallery -->
+<?php
+$args=array('post_type' => 'gallery', 'posts_per_page'=>-1, 'order' => 'ASC', 'post_status' => 'publish',) ;
+$the_qyery= new WP_Query($args);?>
+<?php if ($the_qyery->have_posts()) : ?>
+    <section id="gallery">
+      <div class="container pb-40">
+        <div class="section-title text-center">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="text-uppercase mt-0 mb-0 "><?php the_field('gallery_title'); ?></h2>
+            </div>
+          </div>
+        </div>
+        <div class="section-content">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Works Filter -->
+            <div class="portfolio-filter">
+                <?php
+                    $i=0;
+                   $tax_terms = get_terms('gal_cat', array('hide_empty' => '0'));
+                   foreach ( $tax_terms as $tax_term ):  ?>
+                        <a href="#" class="<?php if($i=='0') { $i=1; echo 'active'; }?> mb-sm-10" data-filter=".<?php echo $tax_term->slug ?>"><?php echo $tax_term->name ?></a>
+                    <?php endforeach;  ?>
+              <!-- <a href="#" class="active mb-sm-10" data-filter="*">All</a>
+              <a href="#computer" class="" data-filter=".computer">Clonable</a>
+              <a href="#laptop" class="" data-filter=".laptop">Not Clonable</a>
+              <a href="#phone" class="" data-filter=".phone">Remote</a>
+              <a href="#ipad" class="" data-filter=".ipad">Normal key</a> -->
+            </div>
+            <!-- End Works Filter -->
+
+            
+            <!-- Portfolio Gallery Grid -->
+            <div id="grid" class="gallery-isotope grid-4 gutter clearfix">
+
+              <!-- Portfolio Item Start -->
+              <?php while ( $the_qyery->have_posts() ) : $the_qyery->the_post();
+                    $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                ?>
+              <div class="gallery-item <?php $terms = get_the_terms( $post->ID , 'gal_cat' );
+                    foreach ( $terms as $term ) { echo $term->slug . ' '; } ?>">
+                <div class="work-gallery">
+                  <div class="gallery-thumb">
+                    <img class="img-fullwidth" alt="" src="<?php echo $image; ?>">
+                    <div class="gallery-overlay"></div>                  
+                    <div class="gallery-contect">
+                      <ul class="styled-icons icon-bordered icon-circled icon-sm">
+                        <li><a data-rel="prettyPhoto" href="<?php the_post_thumbnail_url(); ?>"><i class="fa fa-arrows"></i></a></li>
+                      </ul>
+                    </div> 
+                  </div>
+                  <div class="gallery-bottom-part text-center">
+                    <h4 class="title text-uppercase font-raleway font-weight-500 m-0"><?php the_title(); ?></h4>
+                  </div>
+                </div>
+              </div>
+            <?php endwhile; wp_reset_query(); ?>
+              <!-- Portfolio Item End -->
+              
+
+            </div>
+            <!-- End Portfolio Gallery Grid -->
+          </div>
+        </div>
+        </div>
+      </div >
+    </section>
+<?php endif; ?>
+
+    <!-- Section: Client Say -->
+    <?php
+    $args=array('post_type' => 'testimonial', 'posts_per_page'=>-1, 'order' => 'ASC', 'post_status' => 'publish',) ;
+    $the_qyery= new WP_Query($args);?>
+    <?php if ($the_qyery->have_posts()) :?>
+    <section class="divider parallax layer-overlay overlay-dark-9" data-background-ratio="0.5" data-bg-img="<?php the_field('testimonial_bg_image'); ?>">
+      <div class="container pt-60 pb-60">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+              <h2 class="text-uppercase mt-0 pb-0  text-center text-white"><?php the_field('testimonial_title'); ?></h2>
+            <div class="owl-carousel-1col" data-dots="true">
+                <?php while ( $the_qyery->have_posts() ) : $the_qyery->the_post();
+                  $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                ?>
+                <div class="item">
+                    <div class="testimonial-wrapper text-center">
+                      <div class="thumb"><img class="img-circle" alt="" src="<?php echo $image; ?>"></div>
+                      <div class="content pt-10">
+                        <p class="font-15 text-white"><em><?php the_content(); ?></em></p>
+                        <i class="fa fa-quote-right font-36 mt-10 text-gray-lightgray"></i>
+                        <h4 class="author text-theme-color-2 mb-0"><?php the_title();?></h4>
+                        <h6 class="title text-white mt-0 mb-15"><?php the_field('designation'); ?></h6>
+                      </div>
+                    </div>
+                </div>
+                <?php endwhile; wp_reset_query(); ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <?php endif;  ?>
+    
+    <!-- Section: Blog -->
+    <section>
+      <div class="container pt-70">
+        <div class="section-title text-center">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h2 class="mt-0 mb-0 line-height-1"><?php the_field('blog_title'); ?></h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="owl-carousel-3col owl-nav-top mb-sm-0" data-dots="true">
+  <?php
+  $args=array('post_type' => 'post') ;
+  $the_qyery= new WP_Query($args);
+  if ($the_qyery->have_posts()) :
+  while ( $the_qyery->have_posts() ) : $the_qyery->the_post();?>
+
+              <div class="item">
+                <article class="post clearfix maxwidth600 mb-sm-30 wow fadeInRight" data-wow-delay=".2s">
+                  <div class="entry-header">
+                    <div class="post-thumb thumb"> <img src="<?php the_post_thumbnail_url(); ?>" alt="" class="img-responsive img-fullwidth"> </div>
+                  </div>
+                  <div class="entry-content border-1px p-20 pb-60">
+                    <div class="entry-meta">
+                      <ul class="list-inline font-14 mb-10">
+                        <li><i class="fa fa-user text-theme-colored mr-5"></i>Posted By: <?php the_author(); ?> </li>
+                        <li><i class="fa fa-calendar text-theme-colored mr-5"></i> <?php echo date('d-m-Y'); ?> </li>
+                      </ul>
+                    </div>
+                    <h4 class="entry-title text-uppercase letter-space-1">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </h4>
+                    <p class="mt-15"><?php the_excerpt(); ?></p>
+                    <a class="btn btn-dark btn-theme-colored btn-sm pull-left mt-10" href="<?php the_permalink(); ?>">Read more</a>                  
+                  </div>
+                </article>
+              </div>
+<?php
+endwhile;
+endif;
+?>           
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider: Clients -->
+    <!-- <section class="clients bg-theme-colored">
+      <div class="container pt-10 pb-0 pb-sm-0 pt-sm-0">
+        <div class="row">
+          <div class="col-md-12">
+            
+            <div class="owl-carousel-6col transparent text-center owl-nav-top">
+              <div class="item"> <a href="#"><img src="images/clients/w1.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w2.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w3.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w4.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w5.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w6.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w3.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w4.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w5.png" alt=""></a></div>
+              <div class="item"> <a href="#"><img src="images/clients/w6.png" alt=""></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>     -->  
+  
+  <!-- <section class="divider parallax layer-overlay overlay-dark-9" data-background-ratio="0.5" data-bg-img="images/bg/hbg2.jpg">
+        <section class="divider">
+          <div class="container pt-0">
+            <div class="row mb-60 bg-deep">
+              <div class="col-sm-12 col-md-4">
+                <div class="contact-info text-center pt-60 pb-60 border-right">
+                  <i class="fa fa-phone font-36 mb-10 text-theme-colored"></i>
+                  <h4>Call Us</h4>
+                  <h6 class="text-gray">Phone: +262 695 2601</h6>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div class="contact-info text-center  pt-60 pb-60 border-right">
+                  <i class="fa fa-map-marker font-36 mb-10 text-theme-colored"></i>
+                  <h4>Address</h4>
+                  <h6 class="text-gray">121 King Street, Australia</h6>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div class="contact-info text-center  pt-60 pb-60">
+                  <i class="fa fa-envelope font-36 mb-10 text-theme-colored"></i>
+                  <h4>Email</h4>
+                  <h6 class="text-gray">you@yourdomain.com</h6>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-10">
+              <div class="col-md-5">
+              <h4 class="mt-0 mb-30 line-bottom">Find Our Location</h4>
+              
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.8236991187605!2d151.08320561483154!3d-33.79105062245842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a4312c7d2bcb%3A0xe6f0f0819504907e!2s8a%2F38+Rowe+St%2C+Eastwood+NSW+2122%2C+Australia!5e0!3m2!1sen!2sin!4v1526474968349" width="800" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <div class="map-popupstring hidden" id="popupstring1">
+                <div class="text-center">
+                  <h3>CharityFund Office</h3>
+                  <p>121 King Street, Melbourne Victoria 3000 Australia</p>
+                </div>
+              </div>
+              
+              
+              </div>
+              <div class="col-md-7">
+                <h4 class="mt-0 mb-30 line-bottom">Interested in discussing?</h4>
+                
+                <form id="contact_form" name="contact_form" class="" action="includes/sendmail.php" method="post" novalidate="novalidate">
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="form_name">Name <small>*</small></label>
+                        <input name="form_name" class="form-control" type="text" placeholder="Enter Name" required="" aria-required="true">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Email <small>*</small></label>
+                        <input name="form_email" class="form-control required email" type="email" placeholder="Enter Email" aria-required="true">
+                      </div>
+                    </div>
+                  </div>                
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="form_name">Subject <small>*</small></label>
+                        <input name="form_subject" class="form-control required" type="text" placeholder="Enter Subject" aria-required="true">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="form_phone">Phone</label>
+                        <input name="form_phone" class="form-control" type="text" placeholder="Enter Phone">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="form_name">Message</label>
+                    <textarea name="form_message" class="form-control required" rows="5" placeholder="Enter Message" aria-required="true"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input name="form_botcheck" class="form-control" type="hidden" value="">
+                    <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px" data-loading-text="Please wait...">Send your message</button>
+                    <button type="reset" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px">Reset</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        </div>
+  </section> -->
+
+<?php get_footer();?>
