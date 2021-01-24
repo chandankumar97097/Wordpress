@@ -1,0 +1,17 @@
+/** Theme Menu Support */
+require "libs/nav-menus.php";
+
+/** Widget Support */
+require "libs/widget.php";
+
+/** Custom Function */
+require "libs/custom.php";
+
+/** WooCommerce Hooks */
+require "libs/wc-hooks.php";
+
+/** Pagination */
+require "libs/wp-bootstrap-pagination.php";
+
+/** Bootstrap Navigation Walker */
+require "libs/class-wp-bootstrap-navwalker.php";
