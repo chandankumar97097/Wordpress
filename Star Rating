@@ -1,0 +1,12 @@
+function get_rating_html ($number) {
+    $average_number = round($number);
+    $average_html = '';
+    for ($i=1; $i<=5; $i++) {
+        if ($i<=$average_number) {
+            $average_html = $average_html.'<li class="active"><i data-feather="star"></i></li>';
+        } else {
+            $average_html = $average_html.'<li><i data-feather="star"></i></li>';
+        }
+    }
+    return $average_html;
+}
