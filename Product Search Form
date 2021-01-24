@@ -1,0 +1,5 @@
+<form role="search" method="get" action="<?=get_home_url();?>">
+    <input title="Search for products &amp; brands" name="s" value="<?=get_search_query();?>" type="text" class="form-control" placeholder="Search your products">
+    <button class="glyphicon glyphicon-search" name="post_type" value="product" type="submit">
+    </button>
+</form>
