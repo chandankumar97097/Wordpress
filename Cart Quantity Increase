@@ -1,0 +1,36 @@
+Auto Increase Count Quantity:
+
+HTML:
+<div id="mini-cart-count"></div>
+
+Functions.php:
+
+/** Update cart total without click */
+add_action( 'wp_footer', 'bbloomer_cart_refresh_update_qty' );
+function bbloomer_cart_refresh_update_qty() {
+   if (is_cart()) {
+      ?>
+      <script type="text/javascript">
+         jQuery('div.woocommerce').on('click', 'input.qty', function(){
+            jQuery("[name='update_cart']").trigger("click");
+         });
+      </script>
+      <?php
+   }
+}
+
+/** Auto Update cart quantity */
+add_filter( 'woocommerce_add_to_cart_fragments', 'wc_refresh_mini_cart_count');
+function wc_refresh_mini_cart_count($fragments){
+    ob_start();
+    ?>
+    <div id="mini-cart-count">
+        <?php echo WC()->cart->get_cart_contents_count(); ?>
+    </div>
+    <?php
+        $fragments['#mini-cart-count'] = ob_get_clean();
+    return $fragments;
+}
+
+Main.js:
+$(document.body).trigger('wc_fragment_refresh');
