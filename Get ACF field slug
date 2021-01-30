@@ -1,0 +1,1 @@
+$slug = strtolower(str_replace(array(' ', ':'), array('-', ''), get_sub_field('title')));
