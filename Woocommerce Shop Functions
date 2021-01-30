@@ -1,0 +1,2 @@
+// Add Add to cart variable button
+do_action( 'woocommerce_variable_add_to_cart' );
