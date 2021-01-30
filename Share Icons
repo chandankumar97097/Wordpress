@@ -1,28 +1,42 @@
+/**
+ * Social media share buttons
+ */
+function wcr_share_buttons() {
+$url = urlencode(get_the_permalink());
+$title = urlencode(html_entity_decode(get_the_title(), ENT_COMPAT, 'UTF-8'));
+$media = urlencode(get_the_post_thumbnail_url(get_the_ID(), 'full'));
+
+include( locate_template('share-template.php', false, false) );
+}
+
+/**
+ * Social media html buttons
+ */
 <h2>share this stories:</h2>
 <ul>
-	<li>
-		<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank">
-			<i class="fab fa-facebook-f"></i>
-		</a>
-	</li>
-	<li>
-		<a href="https://twitter.com/intent/tweet?text=<?php echo $title; ?>&amp;url=<?php echo $url; ?>" target="_blank">
-			<i class="fab fa-twitter"></i>
-		</a>
-	</li>
-	<li>
-		<a href="https://www.linkedin.com/shareArticle?url=<?php echo $url; ?>&amp;title=<?php echo $title; ?>&amp;mini=true" target="_blank">
-			<i class="fab fa-linkedin-in"></i>
-		</a>
-	</li>
+<li>
+<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url; ?>" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/intent/tweet?text=<?php echo $title; ?>&amp;url=<?php echo $url; ?>" target="_blank">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/shareArticle?url=<?php echo $url; ?>&amp;title=<?php echo $title; ?>&amp;mini=true" target="_blank">
+<i class="fab fa-linkedin-in"></i>
+</a>
+</li>
     <li>
         <a href="https://pinterest.com/pin/create/button/?url=<?php echo $url; ?>&amp;media=<?php echo $media;   ?>&amp;description=<?php echo $title; ?>" target="_blank">
             <i class="fab fa-pinterest"></i>
         </a>
     </li>
-	<li>
-		<a href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank">
-			<i class="fab fa-google-plus-g"></i>
-		</a>
-	</li>
+<li>
+<a href="https://plus.google.com/share?url=<?php echo $url; ?>" target="_blank">
+<i class="fab fa-google-plus-g"></i>
+</a>
+</li>
 </ul>
