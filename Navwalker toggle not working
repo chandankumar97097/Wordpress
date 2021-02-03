@@ -1,0 +1,18 @@
+Following attributes supports:
+class="nav-link dropdown-toggle"
+role="button"
+data-toggle="dropdown"
+aria-expanded="false"
+
+Replace this with ul tag in header/footer:
+<?php
+    wp_nav_menu( array(
+       'theme_location'    => 'header-menu',
+       'depth'             => 3,
+       'container'         => 'ul',
+       'container_class'   => 'collapse navbar-collapse',
+       'container_id'      => 'bs-example-navbar-collapse-1',
+       'menu_class'        => 'navbar-nav mr-autos',
+       'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+       'walker'            => new WP_Bootstrap_Navwalker(),
+) );?>
