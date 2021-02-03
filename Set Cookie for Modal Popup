@@ -1,0 +1,10 @@
+Add this script on footer: <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+setTimeout(function() {
+    $(document).ready(function () {
+        if ($.cookie("popup_come_only_once") == null) {
+            $('#MODAL_ID').modal('show');
+            $.cookie("popup_come_only_once", "2");
+        }
+    });
+}, 10000);
