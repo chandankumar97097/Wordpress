@@ -1,0 +1,14 @@
+// Add this code inside your 'functions.php'
+function add_file_types_to_uploads($file_types){
+   $new_filetypes = array();
+   $new_filetypes['svg'] = 'image/svg';
+   $file_types = array_merge($file_types, $new_filetypes );
+
+   return $file_types;
+}
+add_action('upload_mimes', 'add_file_types_to_uploads');
+
+// And add this line inside your 'wp-config.php' file
+define( 'ALLOW_UNFILTERED_UPLOADS', true );
+
+now reload the admin panel and try to upload svg image, this will work :)
