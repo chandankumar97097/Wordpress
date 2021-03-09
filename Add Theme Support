@@ -1,0 +1,14 @@
+// Add this inside 'functions.php'
+// Support title tag
+add_theme_support('title-tag');
+
+// Enable Logo option inside customization
+add_theme_support('custom-logo');
+
+// Supports woocommerce single product page, Gallery, Zoom Effect, Slider etc...
+add_theme_support( 'woocommerce' );
+add_theme_support( 'wc-product-gallery-zoom' );
+add_theme_support( 'wc-product-gallery-lightbox' );
+add_theme_support( 'wc-product-gallery-slider' );
+
+Note: Call Logo inside header and footer like: <?php the_custom_logo(); ?>, not need to add inside <a> anchor tag it will automatically return.
