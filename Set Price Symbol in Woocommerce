@@ -1,0 +1,7 @@
+/** Add this code inside 'function.php' file */
+add_filter('woocommerce_currency_symbol','kwd_change_symbol',1,2);
+function kwd_change_symbol($currency_symbol, $currency) {
+    if($currency == 'KWD')
+        $currency_symbol = 'KD';
+    return $currency_symbol;
+}
